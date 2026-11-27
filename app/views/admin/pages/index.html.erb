@@ -1,0 +1,29 @@
+<div class="container mt-5">
+  <h1>Manage Website Content</h1>
+
+  <p>Edit the About Us and Contact Us pages.</p>
+
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Page Title</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @pages.each do |page| %>
+        <tr>
+          <td><%= page.title %></td>
+          <td>
+            <%= link_to "Edit", edit_admin_page_path(page),
+                class: "btn btn-warning btn-sm" %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <%= link_to "Back to Dashboard", admin_dashboard_path,
+      class: "btn btn-secondary" %>
+</div>

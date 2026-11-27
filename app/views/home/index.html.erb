@@ -1,0 +1,104 @@
+<!-- Hero Section -->
+<section class="bg-dark text-white text-center py-5">
+  <div class="container py-5">
+    <h1 class="display-4 fw-bold">
+      Welcome to Maple Bean Coffee Shop ☕
+    </h1>
+
+    <p class="lead mt-3">
+      Fresh Coffee. Better Mornings.
+    </p>
+
+    <p>
+      Discover premium coffee beans, ground coffee,
+      mugs, and brewing accessories.
+    </p>
+
+    <%= link_to "Explore", products_path,
+        class: "btn btn-outline-light" %>
+  </div>
+</section>
+
+<!-- Product Categories -->
+<section id="products" class="container py-5">
+  <h2 class="text-center fw-bold mb-4">
+    Shop Our Categories
+  </h2>
+
+  <% category_details = {
+    "Coffee Beans" => [
+      "https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600",
+      "Explore our premium roasted coffee beans."
+    ],
+    "Ground Coffee" => [
+      "https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600",
+      "Freshly ground coffee for your daily cup."
+    ],
+    "Coffee Mugs" => [
+      "https://images.unsplash.com/photo-1514228742587-6b1558fcca3d?w=600",
+      "Find the perfect mug for your coffee."
+    ],
+    "Brewing Accessories" => [
+      "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
+      "Everything you need to brew great coffee."
+    ]
+  } %>
+
+  <div class="row g-4">
+
+    <% Category.order(:id).each do |category| %>
+
+      <% details = category_details.fetch(category.name, [
+        "https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600",
+        "Explore our #{category.name.downcase} collection."
+      ]) %>
+
+      <div class="col-md-6 col-lg-3">
+        <div class="card h-100 shadow-sm">
+
+          <img
+            src="<%= details[0] %>"
+            class="card-img-top"
+            alt="<%= category.name %>"
+            style="height: 200px; object-fit: cover;"
+          >
+
+          <div class="card-body text-center">
+
+            <h5 class="card-title">
+              <%= category.name %>
+            </h5>
+
+            <p class="card-text">
+              <%= details[1] %>
+            </p>
+
+            <%= link_to "Explore", category_path(category),
+                class: "btn btn-outline-dark" %>
+
+          </div>
+        </div>
+      </div>
+
+    <% end %>
+
+  </div>
+</section>
+
+<!-- About Us -->
+<section id="about" class="bg-light py-5">
+  <div class="container text-center">
+    <h2 class="fw-bold">About Maple Bean</h2>
+
+    <div class="lead mt-3">
+      <%= simple_format(Page.find_by(title: "About Us")&.content) %>
+    </div>
+  </div>
+</section>
+
+<!-- Contact -->
+<section id="contact" class="container text-center py-5">
+  <h2 class="fw-bold">Contact Us</h2>
+
+  <%= simple_format(Page.find_by(title: "Contact Us")&.content) %>
+</section>

@@ -1,0 +1,28 @@
+
+<div class="col-md-6 col-lg-4">
+  <div class="card h-100 shadow-sm">
+    <div class="card-body">
+
+      <h5 class="card-title fw-bold">
+        <%= product.name %>
+      </h5>
+
+      <p class="card-text text-muted">
+        <%= truncate(product.description, length: 100) %>
+      </p>
+
+      <h5 class="text-success">
+        <%= number_to_currency(product.price, unit: "CA$") %>
+      </h5>
+
+      <p class="small text-muted">
+        Stock: <%= product.stock_quantity %>
+      </p>
+
+      <%= link_to "View Details",
+          product_path(product),
+          class: "btn btn-dark" %>
+
+    </div>
+  </div>
+</div>

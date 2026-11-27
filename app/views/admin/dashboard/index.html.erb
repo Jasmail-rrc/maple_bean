@@ -1,0 +1,53 @@
+<div class="container py-5">
+
+  <h1 class="text-center fw-bold mb-3">
+    Admin Dashboard
+  </h1>
+
+  <p class="text-center text-muted mb-5">
+    Welcome to Maple Bean Coffee Shop Administration.
+  </p>
+
+  <div class="row g-4 justify-content-center">
+
+    <div class="col-md-5">
+      <div class="card shadow-sm text-center p-4">
+        <h4>Total Products</h4>
+        <h2 class="text-success">
+          <%= @total_products %>
+        </h2>
+      </div>
+    </div>
+
+    <div class="col-md-5">
+      <div class="card shadow-sm text-center p-4">
+        <h4>Total Categories</h4>
+        <h2 class="text-success">
+          <%= @total_categories %>
+        </h2>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="text-center mt-5">
+
+    <%= link_to "Manage Products", admin_products_path,
+        class: "btn btn-primary" %>
+
+    <%= link_to "Manage Categories", admin_categories_path,
+        class: "btn btn-primary" %>
+
+    <%= link_to "Manage Website Content", admin_pages_path,
+        class: "btn btn-primary" %>
+
+    <%= link_to "View Store", root_path,
+        class: "btn btn-outline-dark mb-3" %>
+
+    <%= button_to "Logout", admin_logout_path,
+        method: :delete,
+        class: "btn btn-danger" %>
+
+  </div>
+
+</div>

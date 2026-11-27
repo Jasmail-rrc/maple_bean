@@ -1,0 +1,53 @@
+
+<div class="container py-5">
+
+<!-- Breadcrumb Navigation -->
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+
+    <li class="breadcrumb-item">
+      <%= link_to "Home", root_path %>
+    </li>
+
+    <li class="breadcrumb-item">
+      <%= link_to "Products", products_path %>
+    </li>
+
+    <li class="breadcrumb-item active" aria-current="page">
+      <%= @category.name %>
+    </li>
+
+  </ol>
+</nav>
+
+
+  <h1 class="text-center fw-bold mb-3">
+    <%= @category.name %> ☕
+  </h1>
+
+  <p class="text-center text-muted mb-5">
+    Explore our selection of <%= @category.name.downcase %>.
+  </p>
+
+  <!-- Category Products Using Reusable Partial -->
+  <div class="row g-4">
+    <% @products.each do |product| %>
+      <%= render "products/product_card", product: product %>
+    <% end %>
+  </div>
+
+  <!-- Empty Category Message -->
+  <% if @products.empty? %>
+    <div class="alert alert-info text-center mt-4">
+      No products available in this category.
+    </div>
+  <% end %>
+
+  <!-- Back Button -->
+  <div class="text-center mt-5">
+    <%= link_to "Back to All Products",
+        products_path,
+        class: "btn btn-outline-dark" %>
+  </div>
+
+</div>
